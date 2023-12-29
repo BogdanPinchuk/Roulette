@@ -1,11 +1,20 @@
+import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Arc;
+import javafx.scene.shape.ArcTo;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -17,6 +26,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Main extends Application {
 
@@ -51,6 +61,9 @@ public class Main extends Application {
         Translate translate = new Translate();
         translate.setY(RADIUS / 2.0);
         group.getTransforms().add(translate);
+
+        // ball
+        group.getChildren().add(getActiveBall());
 
         Scene scene = new Scene(group);
         scene.setFill(GRAY);
@@ -149,6 +162,7 @@ public class Main extends Application {
 
         Font font = Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 35.0);
         text.setFont(font);
+        text.setUnderline(true);
 
         text.setText(numStr);
         text.setFill(Color.WHITE);
@@ -283,7 +297,7 @@ public class Main extends Application {
 
         Text text = new Text();
 
-        Font font = Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 35.0);
+        Font font = Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 40.0);
         text.setFont(font);
 
         text.setText(numStr);
@@ -358,7 +372,7 @@ public class Main extends Application {
 
         Text text = new Text();
 
-        Font font = Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 50.0);
+        Font font = Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 100.0);
         text.setFont(font);
 
         text.setText(numStr);
@@ -612,5 +626,68 @@ public class Main extends Application {
         return getRectRightSide("2 to 1", RADIUS);
     }
 
+    private Shape getBall() {
+        Circle circle = new Circle();
+
+        circle.setCenterX(RADIUS);
+        circle.setCenterY(RADIUS);
+        circle.setRadius(0.1 * RADIUS);
+
+        RadialGradient gradient = new RadialGradient(0.0,
+                0.0,
+                circle.getCenterX(),
+                circle.getCenterY(),
+                circle.getRadius(),
+                false,
+                CycleMethod.NO_CYCLE,
+                new Stop(0, Color.YELLOW),
+                new Stop(5, Color.BLUE));
+
+        circle.setFill(gradient);
+
+        return circle;
+    }
+
+    private Shape getActiveBall() {
+        Shape shape = getBall();
+        double radius = 0.65 * RADIUS;
+        double dr = RADIUS - radius;
+
+        // path
+        Path path = new Path();
+
+        MoveTo moveTo = new MoveTo();
+        moveTo.setX(RADIUS);
+        moveTo.setY(dr);
+
+        ArcTo arcToRight = new ArcTo();
+        arcToRight.setX(RADIUS);
+        arcToRight.setY(RADIUS + radius);
+        arcToRight.setRadiusX(radius);
+        arcToRight.setRadiusY(radius);
+        arcToRight.setSweepFlag(true);
+        arcToRight.setLargeArcFlag(true);
+
+        ArcTo arcToLeft = new ArcTo();
+        arcToLeft.setX(RADIUS);
+        arcToLeft.setY(dr);
+        arcToLeft.setRadiusX(radius);
+        arcToLeft.setRadiusY(radius);
+        arcToLeft.setSweepFlag(true);
+        arcToLeft.setLargeArcFlag(true);
+
+        path.getElements().addAll(moveTo, arcToRight, arcToLeft);
+
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.seconds(3));
+        pathTransition.setNode(shape);
+        pathTransition.setPath(path);
+        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition.setCycleCount(Timeline.INDEFINITE);
+        pathTransition.setAutoReverse(false);
+        pathTransition.play();
+
+        return shape;
+    }
 
 }

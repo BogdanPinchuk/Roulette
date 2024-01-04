@@ -14,12 +14,6 @@ import static elements.BasicData.GRAY;
 
 public class Main extends Application {
 
-    public static final double RADIUS0 = 200.0;
-    private static final double LENGTH = 360.0 / 10.0;
-    private static final double GAP = 4.0;
-    private static final double SIZE_CIRCLE_IN = 0.65;
-
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -62,11 +56,6 @@ public class Main extends Application {
 
         stage.show();
     }
-
-
-
-
-
 
 
 }

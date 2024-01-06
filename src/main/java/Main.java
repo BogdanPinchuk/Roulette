@@ -1,6 +1,7 @@
 import elements.Ball;
 import elements.Chip;
 import elements.GameControls;
+import elements.Manage;
 import elements.MenuRoulette;
 import elements.Sound;
 import elements.Table;
@@ -30,11 +31,16 @@ public class Main extends Application {
         // positions
         BorderPane borderPane = new BorderPane();
 
+        // controls
+        Group controls = GameControls.controls;
+        BorderPane.setAlignment(controls, Pos.BOTTOM_LEFT);
+        borderPane.setBottom(controls);
+
         // background table
         Group table = new Group();
         table.getChildren().addAll(Table.table, Ball.ball);
         // chips
-        table.getChildren().add(getChips());
+        table.getChildren().add(Chip.chips);
         BorderPane.setAlignment(table, Pos.CENTER);
         borderPane.setCenter(table);
 
@@ -42,11 +48,6 @@ public class Main extends Application {
         Group menu = MenuRoulette.menu;
         BorderPane.setAlignment(menu, Pos.TOP_LEFT);
         borderPane.setTop(menu);
-
-        // controls
-        Group controls = GameControls.controls;
-        BorderPane.setAlignment(controls, Pos.BOTTOM_LEFT);
-        borderPane.setBottom(controls);
 
         // audio
         Sound.playRouletteSound();
@@ -57,10 +58,6 @@ public class Main extends Application {
         stage.setScene(scene);
 
         stage.show();
-    }
-
-    private Group getChips() {
-        return Chip.getChip();
     }
 
 }

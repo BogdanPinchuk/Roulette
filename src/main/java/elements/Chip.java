@@ -26,11 +26,64 @@ public class Chip {
 
     public static Group chips;
 
-    public static double X = 700.0,
-            Y = 50.0;
-
     static {
         chips = new Group();
+
+        addAll();
+    }
+
+    public static void addAll() {
+        String value =
+//                "10.0";
+                String.valueOf(Manage.getBetResult());
+
+        // 0 and 00
+        addChip(getChip(2.75 * RADIUS, RADIUS, value));
+        addChip(getChip(2.75 * RADIUS, 1.75 * RADIUS, value));
+        addChip(getChip(2.75 * RADIUS, 0.25 * RADIUS, value));
+        // 1 and 2
+        addChip(getChip(3.00 * RADIUS, RADIUS, value));
+        addChip(getChip(3.00 * RADIUS, 1.50 * RADIUS, value));
+        addChip(getChip(3.00 * RADIUS, 0.50 * RADIUS, value));
+        addChip(getChip(3.50 * RADIUS, RADIUS, value));
+        addChip(getChip(3.50 * RADIUS, 1.75 * RADIUS, value));
+        addChip(getChip(3.50 * RADIUS, 0.25 * RADIUS, value));
+        // 3 and 4
+        addChip(getChip(4.00 * RADIUS, RADIUS, value));
+        addChip(getChip(4.00 * RADIUS, 1.50 * RADIUS, value));
+        addChip(getChip(4.00 * RADIUS, 0.50 * RADIUS, value));
+        addChip(getChip(4.50 * RADIUS, RADIUS, value));
+        addChip(getChip(4.50 * RADIUS, 1.75 * RADIUS, value));
+        addChip(getChip(4.50 * RADIUS, 0.25 * RADIUS, value));
+        // 5 and 6
+        addChip(getChip(5.00 * RADIUS, RADIUS, value));
+        addChip(getChip(5.00 * RADIUS, 1.50 * RADIUS, value));
+        addChip(getChip(5.00 * RADIUS, 0.50 * RADIUS, value));
+        addChip(getChip(5.50 * RADIUS, RADIUS, value));
+        addChip(getChip(5.50 * RADIUS, 1.75 * RADIUS, value));
+        addChip(getChip(5.50 * RADIUS, 0.25 * RADIUS, value));
+        // 7 and 8
+        addChip(getChip(6.00 * RADIUS, RADIUS, value));
+        addChip(getChip(6.00 * RADIUS, 1.50 * RADIUS, value));
+        addChip(getChip(6.00 * RADIUS, 0.50 * RADIUS, value));
+        addChip(getChip(6.50 * RADIUS, RADIUS, value));
+        addChip(getChip(6.50 * RADIUS, 1.75 * RADIUS, value));
+        addChip(getChip(6.50 * RADIUS, 0.25 * RADIUS, value));
+        // 2 to 1
+        addChip(getChip(7.25 * RADIUS, 1.50 * RADIUS, value));
+        addChip(getChip(7.25 * RADIUS, 0.50 * RADIUS, value));
+        // 1 to 4
+        addChip(getChip(4.50 * RADIUS, 2.25 * RADIUS, value));
+        // 5 to 8
+        addChip(getChip(6.50 * RADIUS, 2.25 * RADIUS, value));
+        // even
+        addChip(getChip(3.75 * RADIUS, -0.25 * RADIUS, value));
+        // odd
+        addChip(getChip(6.75 * RADIUS, -0.25 * RADIUS, value));
+        // red diamond
+        addChip(getChip(4.75 * RADIUS, -0.25 * RADIUS, value));
+        // black diamond
+        addChip(getChip(5.75 * RADIUS, -0.25 * RADIUS, value));
     }
 
     public static void addChip(Group chip) {
@@ -39,10 +92,6 @@ public class Chip {
 
     public static void clearChips() {
         chips.getChildren().clear();
-    }
-
-    public static Group getChip() {
-        return getChip(X, Y, "10.0");
     }
 
     public static Group getChip(double X, double Y, String value) {

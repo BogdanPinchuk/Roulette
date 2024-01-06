@@ -59,7 +59,11 @@ public class Ball {
         pathTransition.setNode(shape);
         pathTransition.setPath(path);
         pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+
+        // todo: change
         pathTransition.setCycleCount(Timeline.INDEFINITE);
+//        pathTransition.setCycleCount(3);
+
         pathTransition.setAutoReverse(false);
         pathTransition.play();
 

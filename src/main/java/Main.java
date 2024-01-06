@@ -14,6 +14,10 @@ import static elements.BasicData.GRAY;
 
 public class Main extends Application {
 
+    static {
+        Sound.clazz = Main.class;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -42,7 +46,8 @@ public class Main extends Application {
         borderPane.setBottom(controls);
 
         // audio
-        Sound.getSound(this.getClass());
+        Sound.playRouletteSound();
+//        Sound.playChipsSound();
 
         // move
 //        Translate translate = new Translate();

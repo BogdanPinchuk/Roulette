@@ -46,15 +46,9 @@ public class Main extends Application {
         borderPane.setBottom(controls);
 
         // audio
-        Sound.playRouletteSound();
+//        Sound.playRouletteSound();
 //        Sound.playChipsSound();
 
-        // move
-//        Translate translate = new Translate();
-//        translate.setY(RADIUS / 2.0);
-//        group.getTransforms().add(translate);
-
-//        Scene scene = new Scene(group);
         Scene scene = new Scene(borderPane);
         scene.setFill(GRAY);
         stage.setScene(scene);

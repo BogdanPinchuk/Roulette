@@ -26,7 +26,10 @@ public class MenuRoulette {
 
     private static Menu getFileMenu() {
         Menu menuFile = new Menu("File");
+
         MenuItem exit = new MenuItem("Exit");
+        exit.setOnAction(event -> Manage.exitGame());
+
         menuFile.getItems().add(exit);
 
         return menuFile;

@@ -1,4 +1,5 @@
 import elements.Ball;
+import elements.Chip;
 import elements.GameControls;
 import elements.MenuRoulette;
 import elements.Sound;
@@ -10,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import static elements.BasicData.GRAY;
+import static elements.BasicData.BACKGROUND;
 
 public class Main extends Application {
 
@@ -32,6 +33,8 @@ public class Main extends Application {
         // background table
         Group table = new Group();
         table.getChildren().addAll(Table.table, Ball.ball);
+        // chips
+        table.getChildren().add(Chip.getChip());
         BorderPane.setAlignment(table, Pos.CENTER);
         borderPane.setCenter(table);
 
@@ -50,7 +53,7 @@ public class Main extends Application {
 //        Sound.playChipsSound();
 
         Scene scene = new Scene(borderPane);
-        scene.setFill(GRAY);
+        scene.setFill(BACKGROUND);
         stage.setScene(scene);
 
         stage.show();

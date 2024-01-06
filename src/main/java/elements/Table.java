@@ -85,7 +85,8 @@ public class Table {
     }
 
     private static Shape getCircleInside() {
-        Shape shape = getCircle(SIZE_CIRCLE_IN * RADIUS - 2.0 * GAP);
+        double dr = 0.04 * RADIUS;
+        Shape shape = getCircle(SIZE_CIRCLE_IN * RADIUS - dr);
         shape.setFill(BROWN);
 
         return shape;
@@ -112,8 +113,10 @@ public class Table {
 
         arc.setCenterX(radius);
         arc.setCenterY(radius);
-        arc.setRadiusX(radius - 2.0 * gap);
-        arc.setRadiusY(radius - 2.0 * gap);
+
+        double dr = 0.04 * radius;
+        arc.setRadiusX(radius - dr);
+        arc.setRadiusY(radius - dr);
         arc.setStartAngle(numSector * length + gap / 2.0);
         arc.setLength(length - gap);
         arc.setType(ArcType.ROUND);

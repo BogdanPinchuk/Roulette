@@ -34,7 +34,7 @@ public class Main extends Application {
         Group table = new Group();
         table.getChildren().addAll(Table.table, Ball.ball);
         // chips
-        table.getChildren().add(Chip.getChip());
+        table.getChildren().add(getChips());
         BorderPane.setAlignment(table, Pos.CENTER);
         borderPane.setCenter(table);
 
@@ -49,7 +49,7 @@ public class Main extends Application {
         borderPane.setBottom(controls);
 
         // audio
-//        Sound.playRouletteSound();
+        Sound.playRouletteSound();
 //        Sound.playChipsSound();
 
         Scene scene = new Scene(borderPane);
@@ -59,5 +59,8 @@ public class Main extends Application {
         stage.show();
     }
 
+    private Group getChips() {
+        return Chip.getChip();
+    }
 
 }

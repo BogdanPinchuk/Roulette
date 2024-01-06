@@ -1,12 +1,18 @@
 package elements;
 
+import javafx.geometry.VPos;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
-import static elements.BasicData.BLACK;
 import static elements.BasicData.BLUE;
 import static elements.BasicData.GAP;
 import static elements.BasicData.GRAY;
@@ -20,7 +26,7 @@ public class Chip {
 
     public static Group chips;
 
-    public static double X = 400.0,
+    public static double X = 700.0,
             Y = 50.0;
 
     static {
@@ -36,10 +42,10 @@ public class Chip {
     }
 
     public static Group getChip() {
-        return getChip(X, Y);
+        return getChip(X, Y, "10.0");
     }
 
-    public static Group getChip(double X, double Y) {
+    public static Group getChip(double X, double Y, String value) {
         Group group = new Group();
 
         // circle out
@@ -52,6 +58,9 @@ public class Chip {
 
         // circle inside
         group.getChildren().addAll(getCircleIn(X, Y), getCircleInside(X, Y));
+
+        // text
+        group.getChildren().add(getText(X, Y, value));
 
         return group;
     }
@@ -105,6 +114,23 @@ public class Chip {
         shape.setFill(GRAY);
 
         return shape;
+    }
+
+    private static Shape getText(double X, double Y, String value) {
+        Text text = new Text();
+
+        Font font = Font.font("Arial", FontWeight.BOLD, FontPosture.REGULAR, 20.0);
+        text.setFont(font);
+
+        text.setText(value);
+        text.setFill(Color.WHITE);
+        text.setTextAlignment(TextAlignment.CENTER);
+        text.setTextOrigin(VPos.CENTER);
+
+        text.setLayoutX(X - text.getLayoutBounds().getWidth() / 2.0);
+        text.setLayoutY(Y);
+
+        return text;
     }
 
 }

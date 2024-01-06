@@ -14,6 +14,10 @@ public class Manage {
         bet = BETS[0];
     }
 
+    public static double getBetResult() {
+        return bet / 100.0;
+    }
+
     public static void exitGame() {
         Platform.exit();
     }
@@ -29,9 +33,8 @@ public class Manage {
         }
 
         bet = BETS[index];
-        double result = bet / 100.0;
 
-        label.setText(String.valueOf(result));
+        label.setText(String.valueOf(getBetResult()));
     }
 
 

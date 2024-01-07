@@ -49,7 +49,7 @@ public class Chip {
         addChip(getChip(3.50 * RADIUS, 1.75 * RADIUS, value));
         addChip(getChip(3.50 * RADIUS, 0.25 * RADIUS, value));
         // 3 and 4
-        addChip(getChip(4.00 * RADIUS, RADIUS, value));
+//        addChip(getChip(4.00 * RADIUS, RADIUS, value));
         addChip(getChip(4.00 * RADIUS, 1.50 * RADIUS, value));
         addChip(getChip(4.00 * RADIUS, 0.50 * RADIUS, value));
         addChip(getChip(4.50 * RADIUS, RADIUS, value));
@@ -63,7 +63,7 @@ public class Chip {
         addChip(getChip(5.50 * RADIUS, 1.75 * RADIUS, value));
         addChip(getChip(5.50 * RADIUS, 0.25 * RADIUS, value));
         // 7 and 8
-        addChip(getChip(6.00 * RADIUS, RADIUS, value));
+//        addChip(getChip(6.00 * RADIUS, RADIUS, value));
         addChip(getChip(6.00 * RADIUS, 1.50 * RADIUS, value));
         addChip(getChip(6.00 * RADIUS, 0.50 * RADIUS, value));
         addChip(getChip(6.50 * RADIUS, RADIUS, value));

@@ -62,7 +62,7 @@ public class Ball {
 
         // todo: change
         pathTransition.setCycleCount(Timeline.INDEFINITE);
-//        pathTransition.setCycleCount(3);
+//        pathTransition.setCycleCount(1);
 
         pathTransition.setAutoReverse(false);
         pathTransition.play();

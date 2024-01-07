@@ -18,6 +18,7 @@ public class GameControls {
     private static final Map<String, Control> mapControls = new HashMap<>();
     private static final int HEIGHT = 25;
     private static final int MARGIN_SIZE = 10;
+    private static final int START_VALUE = 10;
 
     static {
         controls = getControls();
@@ -53,7 +54,7 @@ public class GameControls {
         control.setFont(font);
         GridPane.setMargin(control, new Insets(MARGIN_SIZE));
 
-        Manage.currentBet(control, 100);
+        Manage.currentBet(control, START_VALUE);
 
         addControl(control, grid, "lblStake", index);
     }

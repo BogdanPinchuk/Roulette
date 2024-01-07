@@ -3,19 +3,19 @@ package elements;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 
+import static elements.BasicData.BETS;
+import static elements.BasicData.WAGER;
+
 public class Manage {
 
-    private static final Integer[] BETS =
-            {1, 2, 3, 4, 5, 7, 10, 15, 20, 25, 30, 40, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000};
-
-    public static int bet;
+    protected static int bet;
 
     static {
         bet = BETS[0];
     }
 
     public static double getBetResult() {
-        return bet / 100.0;
+        return bet * WAGER / 100.0;
     }
 
     public static void exitGame() {
@@ -25,6 +25,10 @@ public class Manage {
     public static void currentBet(Label label, int value) {
         int index = indexOf(BETS, value);
         setBet(label, index);
+    }
+
+    public static int getBet() {
+        return bet;
     }
 
     private static void setBet(Label label, int index) {

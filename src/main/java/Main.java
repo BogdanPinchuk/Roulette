@@ -5,6 +5,7 @@ import elements.Manage;
 import elements.MenuRoulette;
 import elements.Sound;
 import elements.Table;
+import elements.engine.GameLogic;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -16,8 +17,11 @@ import static elements.BasicData.BACKGROUND;
 
 public class Main extends Application {
 
+    protected static final GameLogic gameLogic;
+
     static {
         Sound.clazz = Main.class;
+        gameLogic = new GameLogic();
     }
 
     public static void main(String[] args) {

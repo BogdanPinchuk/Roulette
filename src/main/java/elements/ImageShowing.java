@@ -1,6 +1,7 @@
 package elements;
 
-import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -25,7 +26,6 @@ public class ImageShowing {
     private static final Map<String, Image> IMAGES = new HashMap<>();
     private static int currentImageIndex = 0;
     private static ImageView imageView;
-    private static Image[] images;
 
     private static Image getImage(String nameImage, String nameFolder) {
         Image image = null;
@@ -55,7 +55,7 @@ public class ImageShowing {
     }
 
     public static ImageView showImages() {
-        Image[] images = new Image[]{
+        Image[] images = {
                 getImage(MORNING, nameFolder),
                 getImage(AFTERNOON, nameFolder),
                 getImage(EVENING, nameFolder),
@@ -66,12 +66,15 @@ public class ImageShowing {
         imageView.setScaleX(scaling);
         imageView.setScaleY(scaling);
         imageView.setPreserveRatio(false);
+//        switchImage(images);
 
-        FadeTransition fadeOut = new FadeTransition(Duration.seconds(duration), imageView);
-//        fadeOut.setFromValue(1.0);
-        fadeOut.setToValue(0.0);
-        fadeOut.setOnFinished(event -> switchImage(images));
-        fadeOut.play();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> switchImage(images)),
+                new KeyFrame(Duration.seconds(duration))
+        );
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
         return imageView;
     }
@@ -80,10 +83,6 @@ public class ImageShowing {
         if (imageView != null) {
             currentImageIndex = ++currentImageIndex % images.length;
             imageView.setImage(images[currentImageIndex]);
-
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(duration), imageView);
-            fadeIn.setToValue(1.0);
-            fadeIn.play();
         }
     }
 

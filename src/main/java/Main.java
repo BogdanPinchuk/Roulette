@@ -1,10 +1,7 @@
-import elements.Ball;
-import elements.Chip;
 import elements.GameControls;
-import elements.Manage;
+import elements.ImageShowing;
 import elements.MenuRoulette;
 import elements.Sound;
-import elements.Table;
 import elements.engine.GameLogic;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -21,6 +18,8 @@ public class Main extends Application {
 
     static {
         Sound.clazz = Main.class;
+        ImageShowing.clazz = Main.class;
+        ImageShowing.nameFolder = "Pictures/1";
         gameLogic = new GameLogic();
     }
 
@@ -36,26 +35,42 @@ public class Main extends Application {
         BorderPane borderPane = new BorderPane();
 
         // controls
+//        /*
         Group controls = GameControls.controls;
         BorderPane.setAlignment(controls, Pos.BOTTOM_LEFT);
         borderPane.setBottom(controls);
+//         */
 
         // background table
+        /*
         Group table = new Group();
         table.getChildren().addAll(Table.table, Ball.ball);
         // chips
         table.getChildren().add(Chip.chips);
         BorderPane.setAlignment(table, Pos.CENTER);
         borderPane.setCenter(table);
+//         */
 
         // menu
+//        /*
         Group menu = MenuRoulette.menu;
         BorderPane.setAlignment(menu, Pos.TOP_LEFT);
         borderPane.setTop(menu);
+//         */
 
         // audio
+        /*
         Sound.playRouletteSound();
 //        Sound.playChipsSound();
+//         */
+
+        // images
+//        /*
+        Group background = new Group();
+        background.getChildren().add(ImageShowing.showImages());
+        BorderPane.setAlignment(background, Pos.CENTER);
+        borderPane.setCenter(background);
+//         */
 
         Scene scene = new Scene(borderPane);
         scene.setFill(BACKGROUND);

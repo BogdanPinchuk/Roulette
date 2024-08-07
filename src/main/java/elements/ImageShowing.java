@@ -65,14 +65,13 @@ public class ImageShowing {
         imageView = new ImageView();
         imageView.setScaleX(scaling);
         imageView.setScaleY(scaling);
-        imageView.setPreserveRatio(false);
+//        imageView.setPreserveRatio(false);
 //        switchImage(images);
 
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.ZERO, event -> switchImage(images)),
-                new KeyFrame(Duration.seconds(duration))
-        );
-
+        KeyFrame frame0 = new KeyFrame(Duration.ZERO, event -> switchImage(images));
+        KeyFrame frame1 = new KeyFrame(Duration.seconds(duration));
+//        KeyFrame
+        Timeline timeline = new Timeline(frame0);
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 

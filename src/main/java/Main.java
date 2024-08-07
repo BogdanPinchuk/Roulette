@@ -1,7 +1,10 @@
+import elements.Ball;
+import elements.Chip;
 import elements.GameControls;
 import elements.ImageShowing;
 import elements.MenuRoulette;
 import elements.Sound;
+import elements.Table;
 import elements.engine.GameLogic;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -42,7 +45,7 @@ public class Main extends Application {
 //         */
 
         // background table
-        /*
+//        /*
         Group table = new Group();
         table.getChildren().addAll(Table.table, Ball.ball);
         // chips
@@ -59,13 +62,13 @@ public class Main extends Application {
 //         */
 
         // audio
-        /*
+//        /*
         Sound.playRouletteSound();
-//        Sound.playChipsSound();
+        Sound.playChipsSound();
 //         */
 
         // images
-//        /*
+        /*
         Group background = new Group();
         background.getChildren().add(ImageShowing.showImages());
         BorderPane.setAlignment(background, Pos.CENTER);

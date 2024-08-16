@@ -43,11 +43,22 @@ public class MenuRoulette {
         Menu menuPlay = new Menu("Play");
 
         MenuItem spin = new MenuItem("Spin");
-        SeparatorMenuItem separator = new SeparatorMenuItem();
+        SeparatorMenuItem separator0 = new SeparatorMenuItem();
         MenuItem respin = new MenuItem("ReSpin");
+        MenuItem pick = new MenuItem("Pick");
+        SeparatorMenuItem separator1 = new SeparatorMenuItem();
         MenuItem select = new MenuItem("Select");
 
-        menuPlay.getItems().addAll(spin, separator, respin, select);
+        MenuItem[] listMenu = {
+                spin,
+                separator0,
+                respin,
+                pick,
+                separator1,
+                select,
+        };
+
+        menuPlay.getItems().addAll(listMenu);
 
         return menuPlay;
     }

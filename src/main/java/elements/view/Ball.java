@@ -1,7 +1,6 @@
-package elements;
+package elements.view;
 
 import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;

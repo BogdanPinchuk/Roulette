@@ -1,10 +1,10 @@
-import elements.Ball;
-import elements.Chip;
+import elements.view.Ball;
+import elements.view.Chip;
 import elements.GameControls;
-import elements.ImageShowing;
+import elements.view.Icon;
 import elements.MenuRoulette;
-import elements.Sound;
-import elements.Table;
+import elements.view.Sound;
+import elements.view.Table;
 import elements.engine.GameLogic;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -12,6 +12,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 
 import static elements.BasicData.BACKGROUND;
 
@@ -21,8 +22,10 @@ public class Main extends Application {
 
     static {
         Sound.clazz = Main.class;
-        ImageShowing.clazz = Main.class;
-        ImageShowing.nameFolder = "Pictures/1";
+        Icon.clazz = Main.class;
+        Icon.nameFolder = "Pictures/icons";
+//        ImageShowing.clazz = Main.class;
+//        ImageShowing.nameFolder = "Pictures/1";
         gameLogic = new GameLogic();
     }
 
@@ -33,6 +36,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Mini-Roulette 8");
+        stage.getIcons().add(Icon.getIcon());
 
         // positions
         BorderPane borderPane = new BorderPane();

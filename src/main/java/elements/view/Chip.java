@@ -1,5 +1,6 @@
-package elements;
+package elements.view;
 
+import elements.Manage;
 import elements.engine.KeyValuePair;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
